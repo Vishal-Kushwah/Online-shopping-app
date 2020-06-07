@@ -1,0 +1,109 @@
+.body1{
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	opacity: 1;
+	/*border:1px solid red;*/
+}
+.header{
+	display:flex;
+	justify-content: space-between;
+}
+.headerMenu{
+	display: block;
+	justify-content: flex-end;
+	align-items: center;
+	text-decoration: none;
+	font-size: 20px;
+}
+.logo{
+	width:182px;
+	height:78px;
+	padding:0 99px;
+}
+.button{
+	padding:10px;
+	text-align: center;
+	background: #0F5EEA 0% 0% no-repeat padding-box;
+	box-shadow: 0px 2px 4px #0000004D;
+	border-radius: 6px;
+	color: white;
+	display: flex;
+	justify-content: center;
+}
+.pin{
+	margin-right: 6px;
+	width: 13px;
+	height: 18px;
+}
+.body2{
+	/*margin:0 10px;*/
+	padding-top: 20px;
+	padding-left: 85px;
+	padding-right: 85px;
+	align-items: center;
+	/*text-align: center;*/
+	/*border: 1px solid red;*/
+}
+.header div{
+	display: flex;
+	padding: 0 5px;
+	text-decoration: none;
+	font-size: 20px;
+	align-items: center;
+}
+
+.header div a{
+	display: inline-block;
+	padding-right: 97px;
+	padding-top:25px;
+	opacity:0.74;
+}
+.phoneicon{
+	width: 84px;
+	height: 77px;
+	opacity: 1;
+}
+.body3{
+	margin: 67px 92px;
+	border-bottom: 1px solid #DCDCDC;
+	text-underline-position: 900px;
+}
+
+p{
+	text-align: left;
+	font-size: 20px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 0.64;
+	margin-right: 190px;
+}
+.body4{
+	margin: 17px 71px;
+	box-shadow: 0px 1px 6px #00000014;
+	border-radius: 8px;
+	/*border: 1px solid red;*/
+}
+.lnth{
+	text-decoration: line-through;
+	padding-left:15px;
+	opacity: 0.54;
+
+}
+.price{
+	margin-right: 100px;
+	display: inline-block;
+}
+.navbottom{
+	margin-top: 10px;
+	padding: 20px 5px 20px 5px;
+	box-shadow: 0px -2px 12px #0000001A;
+	display: flex;
+	justify-content: flex-end;
+}
+.button2{
+	margin-left:10px;
+	color: white;
+	box-shadow: 0px -2px 12px #0000001A;
+	display: flex;
+	border-radius: 4px;
+	padding: 10px;
+}
