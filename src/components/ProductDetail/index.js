@@ -11,8 +11,8 @@ class ProductDetail extends React.Component{
 		super(props);
 		this.state = {
 			productDetails: [],
-			load: false
-
+			load: false,
+			describe: false
 		}
 	}
 	componentDidMount () {
@@ -22,13 +22,17 @@ class ProductDetail extends React.Component{
 										load: true}));
 			
 	}
+	onhandleChange = (describ) => {
+		this.setState({describe: describ});
+	}
+
 	render(){
-		const { productDetails,load } = this.state;
+		const { productDetails, load, onhandleChange, describe } = this.state;
 		if(!load){
 			return <div> Loading</div>;
 		}
 
-		console.log(productDetails);
+		console.log(describe);
 		return(
 			<div >
 				<div  className="mainbody1">
@@ -48,8 +52,6 @@ class ProductDetail extends React.Component{
 									<DropdownMenu name={'Profile'} icon={<ProfileIcon/>}/>
 									<DropdownMenu name={'Orders'} icon={<Order/>}/>
 									<DropdownMenu name={'Signout'} icon={<Signout/>}/>
-
-								
 								</Profile>
 							</div>
 			 			</div>
@@ -235,95 +237,12 @@ class ProductDetail extends React.Component{
 						</div>
 						
 					</div>
-					<div className="grid-container3">
-						<div className="specs"> Specifications</div>
-						<div className="description"> Description</div>	
-						<div className="specsname">
-							<div className='boxsp'>
-								OS
-							</div>
-						</div>
-						<div className="specsdetail">
-							<div className='boxdt'>
-								{productDetails.productSpecification.OS}
-							</div>
-						</div>	
-						<div className="specsname">
-							<div className='boxsp'>
-								RAM
-							</div>
-						</div>
-						<div className="specsdetail">
-							<div className='boxdt'>
-								{productDetails.productSpecification.RAM}
-							</div>
-						</div>	
-						<div className="specsname">
-							<div className='boxsp'>
-								Item Weight
-							</div>
-						</div>
-						<div className="specsdetail">
-							<div className='boxdt'>
-								{productDetails.productSpecification['Item Weight']}
-							</div>
-						</div>	
-						<div className="specsname">
-							<div className='boxsp'>
-								Product Dimensions
-							</div>
-						</div>
-						<div className="specsdetail">
-							<div className='boxdt'>
-								{productDetails.productSpecification['Product Dimensions']}
-							</div>
-						</div>	
-						<div className="specsname">
-							<div className='boxsp'>
-								Camera
-							</div>
-						</div>
-						<div className="specsdetail">
-							<div className='boxdt'>
-								{productDetails.productSpecification['Other camera features']}
-							</div>
-						</div>	
-						<div className="specsname">
-							<div className='boxsp'>
-								Batteries
-							</div>
-						</div>
-						<div className="specsdetail">
-							<div className='boxdt'>
-								{productDetails.productSpecification.Batteries}
-							</div>
-						</div>	
-						<div className="specsname">
-							<div className='boxsp'>
-								Wireless Communication
-							</div>
-						</div>
-						<div className="specsdetail">
-							<div className='boxdt'>
-								{productDetails.productSpecification['Wireless communication technologies']}
-							</div>
-						</div>	
-						<div className="specsname">
-							<div className='boxsp'>
-								Connectivity Technologies
-							</div>
-						</div>
-						<div className="specsdetail">
-							<div className='boxdt'>
-								{productDetails.productSpecification['Connectivity technologies']}
-							</div>
-						</div>	
-						<div className="specsname">
-							<div className='boxsp'style={{color:'#0F5EEA'}} >
-								See more
-							</div>
-						</div>
-					</div>
+					{
+						describe===false				
+						?<Specifications onhandleChange={onhandleChange} productDetails={productDetails}>Specifications</Specifications>
+						:<Descriptions onhandleChange={onhandleChange} productDetails={productDetails}>Description</Descriptions>
+
+					}
 					<div className="reviews">
 						<div style={{fontSize:'28px', fontWeight:'bolder'}}>24 Reviews</div>
 						<div className="rating">
@@ -504,18 +423,14 @@ class ProductDetail extends React.Component{
 						<div style={{padding:'10px 0px'}}>Terms & Conditions</div>
 					</div>
 				</div>
-					<div style={{display:'flex',justifyContent:'flex-end',paddingRight:'20px'}}>
+				<div className="feedback"><img  src={require('../img/Feedback.svg')} alt="feedback"/></div>
+				<div style={{display:'flex',justifyContent:'flex-end',paddingRight:'20px'}}>
 					<div className="bottom">© Locals Digital Services Pvt. Ltd. | ALL RIGHTS RESERVED</div>
-								
-					<div className="bottomicon"
-								 style={{display:'flex'}} >
-									<img style={{padding:'0px 20px',display:'flex'}} src={require('../img/Western-union.svg')} alt='img'/>
-									<img style={{display:'flex',padding:'0 20px'}} src={require('../img/Group 19.svg')} alt='img'/>
-									<img style={{display:'flex',padding:'0 20px'}} src={require('../img/Paypal.svg')} alt='img'/>
-									<img style={{display:'flex',padding:'0 20px'}} src={require('../img/Group 12475.svg')} alt='img'/>
-						
-						
-					
+					<div className="bottomicon"style={{display:'flex'}} >
+						<img style={{padding:'0px 20px',display:'flex'}} src={require('../img/Western-union.svg')} alt='img'/>
+						<img style={{display:'flex',padding:'0 20px'}} src={require('../img/Group 19.svg')} alt='img'/>
+						<img style={{display:'flex',padding:'0 20px'}} src={require('../img/Paypal.svg')} alt='img'/>
+						<img style={{display:'flex',padding:'0 20px'}} src={require('../img/Group 12475.svg')} alt='img'/>
 					</div>
 				</div>
 				</Scroll>
@@ -556,5 +471,124 @@ function DropdownMenu(props){
 	);
 }
 
+function Specifications({productDetails, children, onhandleChange}){
+	console.log(productDetails);
+	return(
+		<div>
+			<div className="grid-container3" style={{marginTop:'100px', marginBottom:'0px'}} >
+				<div className="specs" style={{cursor:'pointer'}}>
+					{children}
+				</div>
+				<div className="description" style={{cursor:'pointer'}} >Description</div>	
+			</div>
+			<div className="grid-container3">
+
+				<div className="specsname">
+					<div className='boxsp'>
+						OS
+					</div>
+				</div>
+				<div className="specsdetail">
+					<div className='boxdt'>
+						{productDetails.productSpecification.OS}
+					</div>
+				</div>	
+				<div className="specsname">
+					<div className='boxsp'>
+						RAM
+					</div>
+				</div>
+				<div className="specsdetail">
+					<div className='boxdt'>
+						{productDetails.productSpecification.RAM}
+					</div>
+				</div>	
+				<div className="specsname">
+					<div className='boxsp'>
+						Item Weight
+					</div>
+				</div>
+				<div className="specsdetail">
+					<div className='boxdt'>
+						{productDetails.productSpecification['Item Weight']}
+					</div>
+				</div>	
+				<div className="specsname">
+					<div className='boxsp'>
+						Product Dimensions
+					</div>
+				</div>
+				<div className="specsdetail">
+					<div className='boxdt'>
+						{productDetails.productSpecification['Product Dimensions']}
+					</div>
+				</div>	
+				<div className="specsname">
+					<div className='boxsp'>
+						Camera
+					</div>
+				</div>
+				<div className="specsdetail">
+					<div className='boxdt'>
+						{productDetails.productSpecification['Other camera features']}
+					</div>
+				</div>	
+				<div className="specsname">
+					<div className='boxsp'>
+						Batteries
+					</div>
+				</div>
+				<div className="specsdetail">
+					<div className='boxdt'>
+						{productDetails.productSpecification.Batteries}
+					</div>
+				</div>	
+				<div className="specsname">
+					<div className='boxsp'>
+						Wireless Communication
+					</div>
+				</div>
+				<div className="specsdetail">
+					<div className='boxdt'>
+						{productDetails.productSpecification['Wireless communication technologies']}
+					</div>
+				</div>	
+				<div className="specsname">
+					<div className='boxsp'>
+						Connectivity Technologies
+					</div>
+				</div>
+				<div className="specsdetail">
+					<div className='boxdt'>
+						{productDetails.productSpecification['Connectivity technologies']}
+					</div>
+				</div>	
+				<div className="specsname">
+					<div className='boxsp'style={{color:'#0F5EEA'}} >
+						See more
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+
+}
+
+function Descriptions({children, onhandleChange, productDetails}){
+	return(
+		<div>
+			<div className="grid-container3" style={{marginTop:'100px', marginBottom:'0px'}} >
+				<div className="specs1" style={{cursor:'pointer'}} onClick={()=>onhandleChange(true)} >Specification</div>	
+				<div className="description1" style={{cursor:'pointer'}} onClick={()=>onhandleChange(true)}  >
+					{children}
+				</div>
+			</div>
+			<div className="des">
+				{productDetails.productDescription}
+			</div>
+			
+		</div>
+	);
+}
 
 export default ProductDetail;
