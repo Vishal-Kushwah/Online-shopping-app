@@ -117,7 +117,7 @@
 	grid-row-end: 10;
 	grid-column-start: 13;
 	grid-column-end: 24;
-	margin:1px;
+	margin:2px;
 }
 .box-or{
 	background: #FF8F430D 0% 0% no-repeat padding-box;
@@ -459,11 +459,10 @@
 	padding:30px;
 	text-align: left;
 	grid-column-start: 2;
-	grid-column-end: 3;
-	font:medium 20px/24px Roboto;
+	grid-column-end: 4;
+	/*font:medium 20px;*/
 	color: #0F5EEA;
 	border-bottom: 2px solid #0F5EEA;
-
 }
 .specs1{
 	padding: 30px;
@@ -472,4 +471,20 @@
 	grid-column-start: 1;
 	grid-column-end: 2;	
 	border-bottom: 1px solid #EBEBEB;
+}
+.colors1{
+	border:2px solid blue;
+	padding:15px;
+	background:#0f0;
+	margin: 20px;
+	/*background-color: skyblue;*/
+}
+.colors2{
+	border:2px solid blue;
+
+	padding:15px;
+	background:#f00;
+	margin: 20px;
+
+
 }

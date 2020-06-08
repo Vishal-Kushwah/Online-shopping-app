@@ -61,7 +61,7 @@ class Seller extends React.Component{
 									<div key={i} className="body4">
 										<div className="header">
 											<div style={{ padding:"20px 0px"}}>
-												<a ><img style={{height: "300px", width: "300px", padding: "0px 35px" }} src={sellers[i].sellerDetails.sellerResources[0].resourceURL} alt='image'/></a>
+												<a ><img style={{height: "300px", width: "300px", padding: "0px 35px" }} src={sellers[i].sellerDetails.sellerResources[0].resourceURL} alt='img'/></a>
 												<div style={{display: "block", padding:"15px"}} >
 														<h5>{sellers[i].sellerDetails.name} </h5>
 														<h5>{sellers[i].sellerDetails.address}</h5>
@@ -92,7 +92,7 @@ class Seller extends React.Component{
 									<div key={i} className="body4">
 										<div className="header">
 											<div style={{ padding:"20px 0px"}}>
-												<a ><img style={{height: "300px", width: "300px", padding: "0px 35px" }} src={sellers[i].sellerDetails.sellerResources[0].resourceURL} alt='image'/></a>
+												<a ><img style={{height: "300px", width: "300px", padding: "0px 35px" }} src={sellers[i].sellerDetails.sellerResources[0].resourceURL} alt='img'/></a>
 												<div style={{display: "block", padding:"15px"}} >
 														<h5>{sellers[i].sellerDetails.name} </h5>
 														<h5>{sellers[i].sellerDetails.address}</h5>

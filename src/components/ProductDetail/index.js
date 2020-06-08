@@ -4,7 +4,8 @@ import { ReactComponent as Signout } from '../img/signout.svg';
 import { ReactComponent as Order } from '../img/order.svg';
 import './style3.css';
 import Scroll from '../Scroll';
-
+import Specifications from './Specifications.js';
+import Descriptions from './Descriptions.js';
 
 class ProductDetail extends React.Component{
 	constructor(props){
@@ -12,7 +13,7 @@ class ProductDetail extends React.Component{
 		this.state = {
 			productDetails: [],
 			load: false,
-			describe: false
+			describe: 'false'
 		}
 	}
 	componentDidMount () {
@@ -22,12 +23,12 @@ class ProductDetail extends React.Component{
 										load: true}));
 			
 	}
-	onhandleChange = (describ) => {
-		this.setState({describe: describ});
+	onhandleChange = (des) => {
+		this.setState({describe: des});
 	}
 
 	render(){
-		const { productDetails, load, onhandleChange, describe } = this.state;
+		const { productDetails, load, describe } = this.state;
 		if(!load){
 			return <div> Loading</div>;
 		}
@@ -100,13 +101,8 @@ class ProductDetail extends React.Component{
 						</div>
 						<div className="variant-items"> 
 							<div style={{display:'flex',alignItems:'center',width:'20%',height:'20%', padding:'2px', marginTop:'1px'}}>Color
-							{
-								productDetails.variants[0].variantResourcesSet.map((vr,i)=>(
-									
-									<img key={i} style={{marginLeft:"15px ",height:'1fr',width:'1fr',padding:"30px"}} src={productDetails.variants[0].variantResourcesSet[i].resourceURL} alt="img"/>
-									
-								))
-								}
+								<div className='colors1'></div>
+								<div className='colors2'></div>
 								<label style={{marginLeft:"25px", display: 'flex'}}>Quantity
 									<select style={{marginLeft:'5px'}} >
 										<option>1</option>
@@ -146,19 +142,19 @@ class ProductDetail extends React.Component{
 						<div className="item-nav">
 							<button className="button" style={{display:'flex', padding: "3px 25px"}} >
 								<img style={{padding: "20px 5px"}}  src={require('../img/instant book.svg')} alt=""/>
-								<hr2 style={{padding: "20px 5px"}} >Buy Now</hr2>
+								<div style={{padding: "15px 5px"}} >Buy Now</div>
 							</button>
 							<div className="button2" style={{padding: "3px 25px",display:'flex'}}>
 								<img style={{padding: "2px 5px"}}  src={require('../img/cart.svg')} alt=""/>
-								<hr2 style={{color:"blue", margin: "20px 5px"}} >Add to Cart</hr2>
+								<div style={{color:"blue", margin: "20px 5px"}} >Add to Cart</div>
 							</div>
 							<div style={{display:"flex"}}>
 								<img style={{padding: "0px 0px 0px 10px"}}  src={require('../img/pickup.svg')} alt=""/>
-								<hr2 style={{color:"blue", padding: "20px 5px"}} >Pickup from store</hr2>
+								<div style={{color:"blue", padding: "20px 5px"}} >Pickup from store</div>
 							</div>
 							<div style={{display:"flex"}} >
 								<img style={{border: "none",padding: "0px 0px 0px 10px"}}  src={require('../img/Calendar delivery.svg')} alt=""/>
-								<hr2 style={{color:"blue", padding: "20px 5px"}} >Calendar delivery</hr2>
+								<div style={{color:"blue", padding: "20px 5px"}} >Calendar delivery</div>
 							</div>
 						</div>
 					</div>
@@ -238,9 +234,9 @@ class ProductDetail extends React.Component{
 						
 					</div>
 					{
-						describe===false				
-						?<Specifications onhandleChange={onhandleChange} productDetails={productDetails}>Specifications</Specifications>
-						:<Descriptions onhandleChange={onhandleChange} productDetails={productDetails}>Description</Descriptions>
+						describe==='false'				
+						?<Specifications onhandleChange={this.onhandleChange} productDetails={productDetails}>Specifications</Specifications>
+						:<Descriptions onhandleChange={this.onhandleChange} productDetails={productDetails}>Description</Descriptions>
 
 					}
 					<div className="reviews">
@@ -471,124 +467,7 @@ function DropdownMenu(props){
 	);
 }
 
-function Specifications({productDetails, children, onhandleChange}){
-	console.log(productDetails);
-	return(
-		<div>
-			<div className="grid-container3" style={{marginTop:'100px', marginBottom:'0px'}} >
-				<div className="specs" style={{cursor:'pointer'}}>
-					{children}
-				</div>
-				<div className="description" style={{cursor:'pointer'}} >Description</div>	
-			</div>
-			<div className="grid-container3">
 
-				<div className="specsname">
-					<div className='boxsp'>
-						OS
-					</div>
-				</div>
-				<div className="specsdetail">
-					<div className='boxdt'>
-						{productDetails.productSpecification.OS}
-					</div>
-				</div>	
-				<div className="specsname">
-					<div className='boxsp'>
-						RAM
-					</div>
-				</div>
-				<div className="specsdetail">
-					<div className='boxdt'>
-						{productDetails.productSpecification.RAM}
-					</div>
-				</div>	
-				<div className="specsname">
-					<div className='boxsp'>
-						Item Weight
-					</div>
-				</div>
-				<div className="specsdetail">
-					<div className='boxdt'>
-						{productDetails.productSpecification['Item Weight']}
-					</div>
-				</div>	
-				<div className="specsname">
-					<div className='boxsp'>
-						Product Dimensions
-					</div>
-				</div>
-				<div className="specsdetail">
-					<div className='boxdt'>
-						{productDetails.productSpecification['Product Dimensions']}
-					</div>
-				</div>	
-				<div className="specsname">
-					<div className='boxsp'>
-						Camera
-					</div>
-				</div>
-				<div className="specsdetail">
-					<div className='boxdt'>
-						{productDetails.productSpecification['Other camera features']}
-					</div>
-				</div>	
-				<div className="specsname">
-					<div className='boxsp'>
-						Batteries
-					</div>
-				</div>
-				<div className="specsdetail">
-					<div className='boxdt'>
-						{productDetails.productSpecification.Batteries}
-					</div>
-				</div>	
-				<div className="specsname">
-					<div className='boxsp'>
-						Wireless Communication
-					</div>
-				</div>
-				<div className="specsdetail">
-					<div className='boxdt'>
-						{productDetails.productSpecification['Wireless communication technologies']}
-					</div>
-				</div>	
-				<div className="specsname">
-					<div className='boxsp'>
-						Connectivity Technologies
-					</div>
-				</div>
-				<div className="specsdetail">
-					<div className='boxdt'>
-						{productDetails.productSpecification['Connectivity technologies']}
-					</div>
-				</div>	
-				<div className="specsname">
-					<div className='boxsp'style={{color:'#0F5EEA'}} >
-						See more
-					</div>
-				</div>
-			</div>
-		</div>
-	);
 
-}
-
-function Descriptions({children, onhandleChange, productDetails}){
-	return(
-		<div>
-			<div className="grid-container3" style={{marginTop:'100px', marginBottom:'0px'}} >
-				<div className="specs1" style={{cursor:'pointer'}} onClick={()=>onhandleChange(true)} >Specification</div>	
-				<div className="description1" style={{cursor:'pointer'}} onClick={()=>onhandleChange(true)}  >
-					{children}
-				</div>
-			</div>
-			<div className="des">
-				{productDetails.productDescription}
-			</div>
-			
-		</div>
-	);
-}
 
 export default ProductDetail;
